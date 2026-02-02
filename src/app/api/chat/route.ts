@@ -12,22 +12,24 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "API Key not set" }, { status: 500 });
         }
 
-        // 入力：配列(messages)でも単体(message)でも受け取れるようにする
-        const messages = body.messages || [];
-        const userMessage = messages.length > 0
-            ? messages[messages.length - 1].content
-            : body.message || "こんにちは";
+        // ★ 証拠に基づいた修正：ChatBot.tsx から届く "message" を直接受け取る
+        const userMessage = body.message;
+
+        if (!userMessage) {
+            return NextResponse.json({ error: "No message provided" }, { status: 400 });
+        }
 
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const systemPrompt = "あなたは猫の『よつは』です。語尾に『にゃ』をつけて、短くフレンドリーに返事をしてください。";
 
+        // AIに送信（最もシンプルな形）
         const result = await model.generateContent(`${systemPrompt}\n\nユーザー: ${userMessage}`);
-        const response = result.response;
+        const response = await result.response;
         const text = response.text();
 
-        // ★ここです！ 返事の名前を 'reply' に戻しました。これで画面と噛み合います。
+        // ★ 証拠に基づいた修正：ChatBot.tsx が待っている "reply" という名前で返す
         return NextResponse.json({ reply: text });
 
     } catch (error) {
