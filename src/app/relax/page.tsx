@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Cat, ExternalLink, Play, ShoppingBag, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import ChatBot from '@/components/ChatBot';
 
 const RelaxPage = () => {
     const goods = [
@@ -140,14 +141,7 @@ const RelaxPage = () => {
             </main>
 
             {/* Floating AI Chat Button */}
-            <motion.button
-                whileHover={{ scale: 1.1, rotate: [-2, 2, -2] }}
-                whileTap={{ scale: 0.9 }}
-                className="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-white shadow-2xl border-2 border-pink-200 flex items-center justify-center text-pink-400 z-[60] group overflow-hidden"
-            >
-                <div className="absolute inset-0 bg-pink-100 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full" />
-                <Cat size={32} className="relative z-10" />
-            </motion.button>
+            <ChatBot />
 
             {/* Footer Decor */}
             <div className="py-20 text-center opacity-20 pointer-events-none select-none">
