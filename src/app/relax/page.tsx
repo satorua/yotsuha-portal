@@ -7,9 +7,27 @@ import Link from 'next/link';
 
 const RelaxPage = () => {
     const goods = [
-        { id: 1, name: "よつはクッション", price: "¥3,200" },
-        { id: 2, name: "猫耳ヘッドセット", price: "¥12,800" },
-        { id: 3, name: "お気に入りのおやつ", price: "¥540" },
+        {
+            id: 1,
+            name: "RealScooper Pro 全自動猫トイレ",
+            shortName: "RealScooper Pro",
+            description: "猫砂自動補充・自動掃除機能付きの高性能トイレ。",
+            link: "#"
+        },
+        {
+            id: 2,
+            name: "PURE PET 自動給餌器 PPAF01-WH",
+            shortName: "PURE PET 自動給餌器",
+            description: "ホワイト。スマホ管理できるスマート給餌器。",
+            link: "#"
+        },
+        {
+            id: 3,
+            name: "Mwpo キャットタワー (162cm)",
+            shortName: "Mwpo キャットタワー",
+            description: "ハンモック付き・多頭飼い対応のライトグレータワー。",
+            link: "#"
+        },
     ];
 
     const galleryItems = [1, 2, 3, 4, 5, 6];
@@ -44,26 +62,21 @@ const RelaxPage = () => {
                         </h1>
                     </motion.div>
 
-                    {/* Video Placeholder */}
+                    {/* Video Container */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="aspect-video w-full rounded-3xl bg-[#F5E6D3] shadow-2xl overflow-hidden relative group cursor-pointer"
+                        className="aspect-video w-full rounded-3xl bg-[#F5E6D3] shadow-2xl overflow-hidden relative"
                     >
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-xl flex items-center justify-center border border-white/50"
-                            >
-                                <Play className="text-white fill-white ml-1" size={32} />
-                            </motion.div>
-                        </div>
-                        {/* Overlay simulation */}
-                        <div className="absolute bottom-6 left-6 text-white text-left opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <p className="font-mono text-sm opacity-80">02:45 / 10:00</p>
-                            <h3 className="text-xl font-bold">のんびりお昼寝タイム</h3>
-                        </div>
+                        <iframe
+                            className="w-full h-full"
+                            src="https://www.youtube.com/embed/irau2-NK5_Q"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        ></iframe>
                     </motion.div>
                 </section>
 
@@ -81,13 +94,17 @@ const RelaxPage = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="group bg-white rounded-[2rem] p-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(216,140,140,0.15)] transition-all duration-500 border border-pink-50/50"
+                                className="group bg-white rounded-[2rem] p-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(216,140,140,0.15)] transition-all duration-500 border border-pink-50/50 flex flex-col h-full"
                             >
                                 <div className="aspect-square rounded-2xl bg-[#FAF3EE] mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                                     <ShoppingBag size={64} className="text-[#D3BFA7]" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-1">{item.name}</h3>
-                                <p className="text-pink-400 font-bold mb-6">{item.price}</p>
+                                <div className="flex-1 space-y-2 mb-6">
+                                    <h3 className="text-xl font-bold leading-tight">【{item.shortName}】</h3>
+                                    <p className="text-sm text-[#A1887F] leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </div>
                                 <button className="w-full py-4 rounded-xl bg-[#4E342E] text-white font-bold flex items-center justify-center gap-2 hover:bg-[#D88C8C] transition-colors shadow-lg shadow-brown-200">
                                     <ExternalLink size={18} />
                                     Amazonで見る
