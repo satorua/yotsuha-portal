@@ -32,6 +32,7 @@ export default function Home() {
         icon={Terminal}
         className="bg-[#0A0A0A] text-[#E0E0E0] border-l border-white/5"
         iconColor="text-emerald-400"
+        href="/tech"
       >
         <div className="mb-6 px-4 py-2 rounded-full border border-emerald-900 bg-emerald-950 text-emerald-400 text-sm font-mono tracking-tighter shadow-[0_0_15px_rgba(16,185,129,0.2)]">
           DEV ACCESS // V1.0.4
