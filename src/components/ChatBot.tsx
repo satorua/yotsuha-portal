@@ -33,7 +33,7 @@ const ChatBot = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('/api/chat', {
+            const response = await fetch('api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: userMessage }),
@@ -113,8 +113,8 @@ const ChatBot = () => {
                                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div className={`max-w-[80%] p-3 rounded-2xl text-sm font-medium ${msg.role === 'user'
-                                            ? 'bg-[#4E342E] text-white rounded-br-none'
-                                            : 'bg-white text-[#5D4037] shadow-sm border border-pink-50 rounded-bl-none'
+                                        ? 'bg-[#4E342E] text-white rounded-br-none'
+                                        : 'bg-white text-[#5D4037] shadow-sm border border-pink-50 rounded-bl-none'
                                         }`}>
                                         {msg.content}
                                     </div>
