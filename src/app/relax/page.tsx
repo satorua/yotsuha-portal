@@ -325,7 +325,7 @@ const RelaxPage = () => {
                 </section>
 
                 {/* Development Story Section - Friendly Version */}
-                <section className="space-y-12">
+                <section id="story" className="space-y-12">
                     <div className="text-center">
                         <h2 className="text-3xl font-black mb-2">誰でもクリエイターになれるにゃ！</h2>
                         <span className="text-pink-400 font-bold block tracking-widest text-xs">AI & You: Story of Creation</span>

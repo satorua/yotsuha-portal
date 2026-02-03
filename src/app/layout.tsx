@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 // src/app/layout.tsx の一部を書き換え
 
 export const metadata: Metadata = {
-  title: "よつは君 ポータル（仮）",
-  description: "よつは君の癒やし空間と、愛用グッズのご紹介",
+  title: "よつは君ポータル🐾",
+  description: "よつは君の癒やし空間と、愛用グッズのご紹介。AIと一緒に作ったファンポータルです。",
 };
 
 export default function RootLayout({
