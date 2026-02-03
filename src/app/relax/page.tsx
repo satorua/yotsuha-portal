@@ -7,7 +7,7 @@ import Link from 'next/link';
 import ChatBot from '@/components/ChatBot';
 
 const RelaxPage = () => {
-    // 1. 商品紹介データ（変更なし：Amazonリンクを完全に維持）
+    // 1. 商品紹介データ
     const goods = [
         {
             id: 1,
@@ -28,4 +28,164 @@ const RelaxPage = () => {
             name: "Mwpo キャットタワー (162cm)",
             shortName: "Mwpo キャットタワー",
             description: "ハンモック付き・多頭飼い対応のライトグレータワー。",
-            link: "
+            link: "https://www.amazon.co.jp/Mwpo-%E3%82%AD%E3%83%A3%E3%83%88%E3%83%AF%E3%83%BC-%E5%A4%A7%E3%81%8D%E3%81%84%E3%83%8F%E3%83%B3%E3%83%A2%E3%83%83%E3%82%AF-%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%83%A9%E3%83%B3%E3%83%89-2%E3%81%A4%E9%AB%98%E3%81%84%E3%83%99%E3%83%83%E3%83%89/dp/B089M1ZQ2H/ref=sr_1_6"
+        },
+    ];
+
+    // 2. ショート動画IDリスト
+    const videoIds = [
+        'PDb9RCc8nu0',
+        'fBJaaV5U51M',
+        'NlFUrHK463k',
+        'k_eTRDYBY-Q',
+        '3VaM0u1sbAQ',
+        'jbCZNtY9rTg'
+    ];
+
+    return (
+        <div className="min-h-screen bg-[#FFFDFB] text-[#5D4037] font-sans selection:bg-pink-100 selection:text-pink-900">
+            {/* Navigation */}
+            <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-pink-50 px-8 py-4 flex justify-between items-center">
+                <Link href="/" className="flex items-center gap-2 hover:text-pink-500 transition-colors group">
+                    <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+                    <span className="font-bold tracking-tight">Portal</span>
+                </Link>
+                <div className="font-black text-xl tracking-widest text-[#D88C8C]">
+                    YOTSUHA RELAX
+                </div>
+                <div className="w-20" />
+            </nav>
+
+            <main className="pt-24 pb-32 px-6 max-w-6xl mx-auto space-y-32">
+                {/* Hero Section */}
+                <section className="space-y-8 text-center pt-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="inline-block px-4 py-1 rounded-full bg-pink-50 text-pink-500 text-xs font-black tracking-widest mb-6">
+                            TODAY&apos;S PICK
+                        </div>
+                        <h1 className="text-4xl md:text-6xl font-black mb-4 text-[#4E342E]">
+                            今日のよつは
+                        </h1>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="aspect-video w-full rounded-3xl bg-[#F5E6D3] shadow-2xl overflow-hidden relative"
+                    >
+                        {/* メイン動画 */}
+                        <iframe
+                            className="w-full h-full"
+                            src={`https://www.youtube.com/embed/${videoIds[0]}`}
+                            title="YouTube video player"
+                            style={{ border: 0 }}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        ></iframe>
+                    </motion.div>
+                </section>
+
+                {/* Goods Section */}
+                <section className="space-y-12">
+                    <div className="text-center">
+                        <h2 className="text-3xl md:text-4xl font-black mb-2">よつはの愛用品</h2>
+                        <p className="text-[#A1887F] font-medium tracking-wide">Yotsuha&apos;s Favorites</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {goods.map((item, i) => (
+                            <motion.div
+                                key={item.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: i * 0.1 }}
+                                className="group bg-white rounded-[2rem] p-6 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(216,140,140,0.15)] transition-all duration-500 border border-pink-50/50 flex flex-col h-full"
+                            >
+                                <div className="aspect-square rounded-2xl bg-[#FAF3EE] mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                                    <ShoppingBag size={64} className="text-[#D3BFA7]" />
+                                </div>
+                                <div className="flex-1 space-y-2 mb-6">
+                                    <h3 className="text-xl font-bold leading-tight">【{item.shortName}】</h3>
+                                    <p className="text-sm text-[#A1887F] leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                </div>
+                                <a
+                                    href={item.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-full py-4 rounded-xl bg-[#4E342E] text-white font-bold flex items-center justify-center gap-2 hover:bg-[#D88C8C] transition-colors shadow-lg shadow-brown-200"
+                                >
+                                    <ExternalLink size={18} />
+                                    Amazonで見る
+                                </a>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Gallery Section */}
+                <section className="space-y-12 pb-20">
+                    <div className="text-center md:text-left border-b-2 border-pink-100 pb-6 mb-12">
+                        <h2 className="text-3xl font-black tracking-tight text-[#4E342E]">Video Gallery</h2>
+                        <p className="text-[#A1887F] text-sm mt-1">よつはの日常を覗き見る窓</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                        {/* 6本の動画を「窓」として表示 */}
+                        {videoIds.map((id, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: i * 0.1 }}
+                                whileHover={{
+                                    scale: 1.03,
+                                    rotate: i % 2 === 0 ? 1 : -1,
+                                    y: -10
+                                }}
+                                className="relative group"
+                            >
+                                {/* 装飾用の背面レイヤー（窓の質感を出す） */}
+                                <div className="absolute -inset-1 bg-gradient-to-tr from-pink-200 to-brown-200 rounded-[2.5rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
+
+                                <div className="relative aspect-[9/16] rounded-[2rem] md:rounded-[2.5rem] bg-white overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] group-hover:shadow-[0_40px_80px_-20px_rgba(216,140,140,0.3)] transition-all duration-500 border-4 border-white">
+                                    <iframe
+                                        className="w-full h-full"
+                                        src={`https://www.youtube.com/embed/${id}`}
+                                        title={`Yotsuha Video ${i}`}
+                                        style={{ border: 0 }}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowFullScreen
+                                    ></iframe>
+
+                                    {/* 窓の下部の反射のようなエフェクト（オーバーレイ） */}
+                                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-60"></div>
+                                </div>
+
+                                {/* 窓のラベル（動画のインデックスなど） */}
+                                <div className="mt-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <span className="text-[10px] font-black tracking-[0.2em] text-[#D88C8C] uppercase">Window {i + 1}</span>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+            </main>
+
+            <ChatBot />
+
+            <div className="py-20 text-center opacity-20 pointer-events-none select-none">
+                <p className="font-black text-6xl md:text-9xl leading-none">RELAX & HEAL</p>
+            </div>
+        </div>
+    );
+};
+
+export default RelaxPage;
