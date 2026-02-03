@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, MessageCircle } from 'lucide-react';
+import { Send, X, Cat, PawPrint } from 'lucide-react';
 
 export default function ChatBot() {
     const [isOpen, setIsOpen] = useState(false);
@@ -52,10 +52,20 @@ export default function ChatBot() {
             {/* チャットボタン */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="bg-pink-400 hover:bg-pink-500 text-white p-4 rounded-full shadow-lg transition-all"
+                className="bg-pink-400 hover:bg-pink-500 text-white p-4 rounded-full shadow-lg transition-all hover:scale-110 active:scale-95 animate-bounce-subtle"
             >
-                {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+                {isOpen ? <X size={24} /> : <Cat size={24} />}
             </button>
+
+            <style jsx>{`
+                @keyframes bounce-subtle {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-5px); }
+                }
+                .animate-bounce-subtle {
+                    animation: bounce-subtle 3s infinite ease-in-out;
+                }
+            `}</style>
 
             {/* チャットウィンドウ */}
             {isOpen && (
@@ -91,18 +101,24 @@ export default function ChatBot() {
                         )}
                     </div>
 
-                    <div className="p-4 bg-white border-t border-gray-100 flex space-x-2">
-                        <input
-                            type="text"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                            placeholder="メッセージを入力..."
-                            className="flex-1 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-pink-400"
-                        />
-                        <button onClick={handleSend} className="text-pink-400 hover:text-pink-600 transition-colors">
-                            <Send size={20} />
-                        </button>
+                    <div className="flex flex-col bg-white">
+                        <div className="px-4 py-1.5 bg-pink-50 text-[10px] text-[#A1887F] font-bold border-t border-pink-100 flex items-center gap-1">
+                            <PawPrint size={10} className="text-pink-300" />
+                            AIは間違った答えを言うこともあるにゃ。大事なことは確認してにゃ！
+                        </div>
+                        <div className="p-4 border-t border-gray-100 flex space-x-2">
+                            <input
+                                type="text"
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                                placeholder="メッセージを入力..."
+                                className="flex-1 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-pink-400"
+                            />
+                            <button onClick={handleSend} className="text-pink-400 hover:text-pink-600 transition-colors">
+                                <Send size={20} />
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
