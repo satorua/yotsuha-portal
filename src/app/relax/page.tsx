@@ -32,7 +32,10 @@ const RelaxPage = () => {
         },
     ];
 
-    // 2. ショート動画IDリスト
+    // 2. ヒーロー動画（一番上のメイン動画）
+    const heroVideoId = 'S7bAcZNDJNw';
+
+    // 3. ギャラリー用ショート動画IDリスト（6本）
     const videoIds = [
         'PDb9RCc8nu0',
         'fBJaaV5U51M',
@@ -81,7 +84,7 @@ const RelaxPage = () => {
                         {/* メイン動画 */}
                         <iframe
                             className="w-full h-full"
-                            src={`https://www.youtube.com/embed/${videoIds[0]}`}
+                            src={`https://www.youtube.com/embed/${heroVideoId}`}
                             title="YouTube video player"
                             style={{ border: 0 }}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
