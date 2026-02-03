@@ -48,13 +48,24 @@ export default function ChatBot() {
     };
 
     return (
-        <div className="fixed bottom-5 right-5 z-50 font-sans">
+        <div className="fixed bottom-10 right-10 z-50 font-sans flex flex-col items-end gap-4">
+            {/* 誘導メッセージ（吹き出し） */}
+            {!isOpen && (
+                <div className="animate-float mb-2">
+                    <div className="relative bg-white text-[#5D4037] px-6 py-3 rounded-2xl shadow-xl border-2 border-pink-100 whitespace-nowrap text-sm font-black">
+                        AIよつはとお話ししたい方はこちらにゃ🐾
+                        {/* 吹き出しの三角部分 */}
+                        <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r-2 border-b-2 border-pink-100 rotate-45"></div>
+                    </div>
+                </div>
+            )}
+
             {/* チャットボタン */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="bg-pink-400 hover:bg-pink-500 text-white p-4 rounded-full shadow-lg transition-all hover:scale-110 active:scale-95 animate-bounce-subtle"
+                className="bg-pink-400 hover:bg-pink-500 text-white p-5 rounded-full shadow-[0_15px_30px_-5px_rgba(216,140,140,0.4)] transition-all hover:scale-110 active:scale-95 animate-bounce-subtle group"
             >
-                {isOpen ? <X size={24} /> : <Cat size={24} />}
+                {isOpen ? <X size={32} /> : <Cat size={32} className="group-hover:rotate-12 transition-transform" />}
             </button>
 
             <style jsx>{`
@@ -62,8 +73,15 @@ export default function ChatBot() {
                     0%, 100% { transform: translateY(0); }
                     50% { transform: translateY(-5px); }
                 }
+                @keyframes float {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-8px); }
+                }
                 .animate-bounce-subtle {
                     animation: bounce-subtle 3s infinite ease-in-out;
+                }
+                .animate-float {
+                    animation: float 2.5s infinite ease-in-out;
                 }
             `}</style>
 
