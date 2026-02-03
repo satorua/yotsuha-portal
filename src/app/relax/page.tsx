@@ -66,7 +66,7 @@ const RelaxPage = () => {
     return (
         <div className="min-h-screen bg-[#FFFDFB] text-[#5D4037] font-sans selection:bg-pink-100 selection:text-pink-900">
             {/* Navigation */}
-            <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-pink-50 px-8 py-4 flex justify-between items-center">
+            <nav className="fixed top-0 left-0 w-full z-[100] bg-white/80 backdrop-blur-md border-b border-pink-50 px-8 py-4 flex justify-between items-center">
                 <Link href="/" className="flex items-center gap-2 hover:text-pink-500 transition-colors group">
                     <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
                     <span className="font-bold tracking-tight">Portal</span>

@@ -48,7 +48,7 @@ export default function ChatBot() {
     };
 
     return (
-        <div className="fixed bottom-10 right-10 z-50 font-sans flex flex-col items-end gap-4">
+        <div className="fixed bottom-10 right-10 z-40 font-sans flex flex-col items-end gap-4">
             {/* 誘導メッセージ（吹き出し） */}
             {!isOpen && (
                 <div className="animate-float mb-2">
