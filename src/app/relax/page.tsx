@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, ShoppingBag, ArrowLeft, Code, Sparkles, Cpu, Layers, Heart } from 'lucide-react';
+import { ExternalLink, ShoppingBag, ArrowLeft, Code, Sparkles, Cpu, Layers, Heart, Wand2, MessageSquare, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import ChatBot from '@/components/ChatBot';
 
@@ -324,94 +324,88 @@ const RelaxPage = () => {
                     </motion.div>
                 </section>
 
-                {/* Development Story Section */}
+                {/* Development Story Section - Friendly Version */}
                 <section className="space-y-12">
                     <div className="text-center">
-                        <h2 className="text-3xl font-black mb-2">開発ストーリー（裏話）</h2>
-                        <span className="text-[#A1887F] font-bold block uppercase tracking-widest text-xs">Behind the Scenes</span>
+                        <h2 className="text-3xl font-black mb-2">誰でもクリエイターになれるにゃ！</h2>
+                        <span className="text-pink-400 font-bold block tracking-widest text-xs">AI & You: Story of Creation</span>
                     </div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_10px_50px_-15px_rgba(0,0,0,0.03)] border border-pink-50 relative overflow-hidden"
+                        transition={{ duration: 0.6 }}
+                        className="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(216,140,140,0.1)] border border-pink-50 relative"
                     >
-                        {/* 装飾: 技術スタックのフローティングアイコン */}
-                        <div className="absolute top-10 right-10 opacity-[0.03] rotate-12 pointer-events-none">
-                            <Code size={180} />
-                        </div>
-                        <div className="absolute -bottom-10 -left-10 opacity-[0.03] -rotate-12 pointer-events-none">
-                            <Sparkles size={180} />
-                        </div>
+                        <div className="max-w-4xl mx-auto space-y-16">
+                            <div className="text-center space-y-4">
+                                <h3 className="text-2xl font-black text-[#4E342E]">
+                                    コードが書けなくても、<span className="text-pink-500">魔法の杖</span>があれば大丈夫。
+                                </h3>
+                                <p className="text-[#A1887F] leading-relaxed max-w-2xl mx-auto font-medium">
+                                    このサイトはエンジニアじゃない作者が、AIエージェント「Antigravity」とお話ししながら作りました。<br className="hidden md:block" />
+                                    難しい勉強はいらないにゃ。必要なのは「こんなの作りたい！」っていうワクワクする気持ちだけ！
+                                </p>
+                            </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
-                            <div className="space-y-8">
-                                <div className="space-y-4">
-                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-50 text-pink-500 text-[10px] font-black tracking-widest uppercase">
-                                        <Cpu size={12} /> Tech Stack
-                                    </div>
-                                    <h3 className="text-2xl font-black text-[#4E342E]">
-                                        非エンジニアがAIと創り上げた<br />「癒やしのポータルサイト」
-                                    </h3>
-                                    <p className="text-[#A1887F] leading-relaxed text-sm">
-                                        このサイトは、エンジニアではない作者がAIエージェント「Antigravity」を開発パートナーとして迎え、対話を通じて構築したものです。
-                                    </p>
-                                </div>
-
-                                <div className="grid grid-cols-2 gap-4">
-                                    {[
-                                        { icon: <Layers size={18} />, label: "Next.js 15 (App Router)", color: "bg-gray-50 text-gray-700" },
-                                        { icon: <Sparkles size={18} />, label: "Gemini AI", color: "bg-blue-50 text-blue-600" },
-                                        { icon: <Code size={18} />, label: "Tailwind CSS", color: "bg-sky-50 text-sky-600" },
-                                        { icon: <Cpu size={18} />, label: "YouTube API", color: "bg-red-50 text-red-600" },
-                                    ].map((tech, idx) => (
-                                        <div key={idx} className={`flex items-center gap-3 p-3 rounded-2xl ${tech.color} font-bold text-[10px]`}>
-                                            {tech.icon}
-                                            {tech.label}
+                            {/* 3 Step Process */}
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                {[
+                                    {
+                                        step: "Step 01",
+                                        title: "想いを伝える",
+                                        desc: "AIにお話しするだけ！「猫の可愛いサイトを作りたいにゃ」と伝えます。",
+                                        icon: <MessageSquare size={32} className="text-blue-400" />,
+                                        bg: "bg-blue-50"
+                                    },
+                                    {
+                                        step: "Step 02",
+                                        title: "AIが形にする",
+                                        desc: "AIが魔法のようにコードを書いて、目の前でサイトが出来上がります。",
+                                        icon: <Wand2 size={32} className="text-pink-400" />,
+                                        bg: "bg-pink-50"
+                                    },
+                                    {
+                                        step: "Step 03",
+                                        title: "もっと良くする",
+                                        desc: "「ここをピンクにして！」と言えば、AIがすぐに直してくれます。",
+                                        icon: <CheckCircle size={32} className="text-green-400" />,
+                                        bg: "bg-green-50"
+                                    }
+                                ].map((item, idx) => (
+                                    <div key={idx} className="relative p-8 rounded-[2rem] bg-[#FAF8F5] border border-white shadow-sm flex flex-col items-center text-center space-y-4">
+                                        <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-2`}>
+                                            {item.icon}
                                         </div>
-                                    ))}
-                                </div>
+                                        <span className="text-[10px] font-black text-[#D3BFA7] tracking-[0.2em]">{item.step}</span>
+                                        <h4 className="text-lg font-black">{item.title}</h4>
+                                        <p className="text-xs text-[#A1887F] leading-relaxed">{item.desc}</p>
+                                    </div>
+                                ))}
                             </div>
 
-                            <div className="bg-[#FAF8F5] rounded-[2.5rem] p-8 space-y-6 flex flex-col justify-center border border-pink-50/50">
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-2 text-pink-500 font-black text-sm">
-                                        <Heart size={16} fill="currentColor" />
-                                        <span>AIとの共創プロセス</span>
+                            <div className="bg-pink-50/50 rounded-[2.5rem] p-8 md:p-10 border border-dashed border-pink-200">
+                                <div className="flex flex-col md:flex-row items-center gap-8">
+                                    <div className="flex-1 space-y-4">
+                                        <h4 className="text-xl font-black text-[#4E342E] flex items-center gap-2">
+                                            <Sparkles size={20} className="text-pink-400" />
+                                            次は、あなたの番だにゃ！
+                                        </h4>
+                                        <p className="text-sm text-[#5D4037] leading-relaxed">
+                                            AIは昨日までできなかったことを、今日できるようにしてくれる最高のパートナー。このサイトも、AIとの楽しいおしゃべりから生まれました。<br />
+                                            あなたの中に眠っている「作りたい」を、AIと一緒に魔法で形にしてみないかにゃ？
+                                        </p>
                                     </div>
-                                    <div className="space-y-4 text-xs text-[#5D4037] leading-relaxed">
-                                        <div className="p-4 bg-white rounded-2xl border border-pink-100/50 shadow-sm italic text-pink-500 font-bold">
-                                            &quot;よつは君の魅力を伝えるポータルを創るにゃ！&quot;
+                                    <div className="shrink-0 grid grid-cols-2 gap-3">
+                                        <div className="px-4 py-3 bg-white rounded-xl shadow-sm text-[10px] font-bold text-gray-400 flex flex-col items-center gap-1">
+                                            <Layers size={14} /> Next.js
                                         </div>
-                                        <p>
-                                            そんな想いから始まり、AIが最新のAPI連携や複雑なUI実装を実現。作者のこだわりをAIが即座に形にする。非エンジニアでも「思考をプログラム」できる、新しい制作の形を体現しています。
-                                        </p>
-                                        <p className="font-bold text-[#D88C8C]">
-                                            AIとの対話そのものが、このサイトの「設計図」です。
-                                        </p>
+                                        <div className="px-4 py-3 bg-white rounded-xl shadow-sm text-[10px] font-bold text-gray-400 flex flex-col items-center gap-1">
+                                            <Cpu size={14} /> Gemini AI
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        {/* 下部のステータスバー的な装飾 */}
-                        <div className="mt-10 flex flex-wrap gap-8 items-center justify-between border-t border-pink-100 pt-8">
-                            <div className="flex gap-6">
-                                <div className="flex flex-col">
-                                    <span className="text-[10px] text-[#D3BFA7] font-black uppercase tracking-widest">Build Status</span>
-                                    <span className="text-xs font-bold flex items-center gap-1.5 text-green-500">
-                                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                                        Production
-                                    </span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-[10px] text-[#D3BFA7] font-black uppercase tracking-widest">Efficiency</span>
-                                    <span className="text-xs font-bold text-[#5D4037]">AI Guided (95%)</span>
-                                </div>
-                            </div>
-                            <div className="text-[9px] text-[#D3BFA7] font-medium leading-tight max-w-[200px]">
-                                This project demonstrates the potential of AI-assisted development for creators and non-engineers.
                             </div>
                         </div>
                     </motion.div>
