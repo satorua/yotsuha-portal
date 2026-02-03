@@ -32,8 +32,8 @@ const RelaxPage = () => {
         },
     ];
 
-    // 2. ヒーロー動画（一番上のメイン動画）
-    const heroVideoId = 'S7bAcZNDJNw';
+    // 2. ヒーロー動画用のステート（最新をAPIから取得）
+    const [heroVideoId, setHeroVideoId] = React.useState('S7bAcZNDJNw');
 
     // 3. ギャラリー用ショート動画IDリスト（6本）
     const videoIds = [
@@ -44,6 +44,21 @@ const RelaxPage = () => {
         '3VaM0u1sbAQ',
         'jbCZNtY9rTg'
     ];
+
+    React.useEffect(() => {
+        const fetchLatest = async () => {
+            try {
+                const res = await fetch('/api/youtube/latest');
+                const data = await res.json();
+                if (data.videoId) {
+                    setHeroVideoId(data.videoId);
+                }
+            } catch (error) {
+                console.error("Failed to fetch latest video:", error);
+            }
+        };
+        fetchLatest();
+    }, []);
 
     return (
         <div className="min-h-screen bg-[#FFFDFB] text-[#5D4037] font-sans selection:bg-pink-100 selection:text-pink-900">
@@ -140,44 +155,47 @@ const RelaxPage = () => {
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
-                        {/* 6本の動画を「窓」として表示 */}
-                        {videoIds.map((id, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: i * 0.1 }}
-                                whileHover={{
-                                    scale: 1.03,
-                                    rotate: i % 2 === 0 ? 1 : -1,
-                                    y: -10
-                                }}
-                                className="relative group"
-                            >
-                                {/* 装飾用の背面レイヤー（窓の質感を出す） */}
-                                <div className="absolute -inset-1 bg-gradient-to-tr from-pink-200 to-brown-200 rounded-[2.5rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
+                        {/* ギャラリーからはヒーロー動画を自動で除外して表示 */}
+                        {videoIds
+                            .filter(id => id !== heroVideoId)
+                            .slice(0, 6)
+                            .map((id, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: i * 0.1 }}
+                                    whileHover={{
+                                        scale: 1.03,
+                                        rotate: i % 2 === 0 ? 1 : -1,
+                                        y: -10
+                                    }}
+                                    className="relative group"
+                                >
+                                    {/* 装飾用の背面レイヤー（窓の質感を出す） */}
+                                    <div className="absolute -inset-1 bg-gradient-to-tr from-pink-200 to-brown-200 rounded-[2.5rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
 
-                                <div className="relative aspect-[9/16] rounded-[2rem] md:rounded-[2.5rem] bg-white overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] group-hover:shadow-[0_40px_80px_-20px_rgba(216,140,140,0.3)] transition-all duration-500 border-4 border-white">
-                                    <iframe
-                                        className="w-full h-full"
-                                        src={`https://www.youtube.com/embed/${id}`}
-                                        title={`Yotsuha Video ${i}`}
-                                        style={{ border: 0 }}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowFullScreen
-                                    ></iframe>
+                                    <div className="relative aspect-[9/16] rounded-[2rem] md:rounded-[2.5rem] bg-white overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] group-hover:shadow-[0_40px_80px_-20px_rgba(216,140,140,0.3)] transition-all duration-500 border-4 border-white">
+                                        <iframe
+                                            className="w-full h-full"
+                                            src={`https://www.youtube.com/embed/${id}`}
+                                            title={`Yotsuha Video ${i}`}
+                                            style={{ border: 0 }}
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowFullScreen
+                                        ></iframe>
 
-                                    {/* 窓の下部の反射のようなエフェクト（オーバーレイ） */}
-                                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-60"></div>
-                                </div>
+                                        {/* 窓の下部の反射のようなエフェクト（オーバーレイ） */}
+                                        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-60"></div>
+                                    </div>
 
-                                {/* 窓のラベル（動画のインデックスなど） */}
-                                <div className="mt-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <span className="text-[10px] font-black tracking-[0.2em] text-[#D88C8C] uppercase">Window {i + 1}</span>
-                                </div>
-                            </motion.div>
-                        ))}
+                                    {/* 窓のラベル（動画のインデックスなど） */}
+                                    <div className="mt-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <span className="text-[10px] font-black tracking-[0.2em] text-[#D88C8C] uppercase">Window {i + 1}</span>
+                                    </div>
+                                </motion.div>
+                            ))}
                     </div>
                 </section>
             </main>

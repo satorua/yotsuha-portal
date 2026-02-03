@@ -1,6 +1,27 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function TopPage() {
+  const [videoId, setVideoId] = useState('S7bAcZNDJNw'); // デフォルトID
+
+  useEffect(() => {
+    // APIから最新動画を取得
+    const fetchLatestVideo = async () => {
+      try {
+        const res = await fetch('/api/youtube/latest');
+        const data = await res.json();
+        if (data.videoId) {
+          setVideoId(data.videoId);
+        }
+      } catch (error) {
+        console.error("Failed to fetch latest video:", error);
+      }
+    };
+    fetchLatestVideo();
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#FFFDFB] flex flex-col items-center justify-center relative">
 
@@ -12,7 +33,7 @@ export default function TopPage() {
           <div className="relative w-48 aspect-[9/16] bg-white rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/S7bAcZNDJNw?autoplay=0&controls=0&rel=0"
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=0&controls=0&rel=0`}
               title="Yotsuha Short Video"
               style={{ border: 0 }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -33,7 +54,7 @@ export default function TopPage() {
           RELAX & HEALING
         </p>
 
-        {/* 統合された単一の入り口（フェーズ1で作った /relax へ誘導） */}
+        {/* 統合された単一の入り口 */}
         <Link
           href="/relax"
           className="bg-gray-900 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-all shadow-lg hover:scale-105"
@@ -41,9 +62,9 @@ export default function TopPage() {
           Enter Portal
         </Link>
 
-        {/* 技術要素は控えめに下部へ配置（開発者向け） */}
+        {/* 技術要素は控えめに下部へ配置 */}
         <div className="mt-12 text-xs font-mono text-gray-300">
-          <span>DEV ACCESS // V1.0.4</span>
+          <span>DEV ACCESS // V1.0.5 (AUTO-UPDATE)</span>
         </div>
       </div>
 
