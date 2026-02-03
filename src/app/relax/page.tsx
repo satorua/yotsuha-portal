@@ -147,6 +147,44 @@ const RelaxPage = () => {
                     </div>
                 </section>
 
+                {/* YouTube Channel Link Section */}
+                <section className="flex flex-col items-center justify-center space-y-6">
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative group cursor-pointer"
+                    >
+                        {/* 左耳 */}
+                        <div className="absolute -top-3 left-6 w-8 h-8 bg-[#FF0000] rounded-tl-full group-hover:bg-[#CC0000] transition-colors"></div>
+                        {/* 右耳 */}
+                        <div className="absolute -top-3 right-6 w-8 h-8 bg-[#FF0000] rounded-tr-full group-hover:bg-[#CC0000] transition-colors"></div>
+
+                        <a
+                            href="https://www.youtube.com/@428kun"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative block px-12 py-6 bg-[#FF0000] text-white rounded-[2rem] shadow-2xl hover:bg-[#CC0000] transition-all duration-300 group-hover:shadow-pink-200/50"
+                        >
+                            <div className="flex items-center gap-4">
+                                <div className="bg-white p-2 rounded-full text-[#FF0000]">
+                                    <ExternalLink size={24} />
+                                </div>
+                                <div className="text-left">
+                                    <p className="text-[10px] font-black tracking-widest uppercase opacity-80">Official Channel</p>
+                                    <p className="text-xl md:text-2xl font-black">YouTubeで見に行くにゃ！</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        {/* 吹き出しの尻尾風装飾 */}
+                        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#FF0000] rotate-45 group-hover:bg-[#CC0000] transition-colors"></div>
+                    </motion.div>
+
+                    <p className="text-[#A1887F] text-sm font-bold italic">
+                        毎日15:15更新中🐾 チャンネル登録よろしくだにゃ！
+                    </p>
+                </section>
+
                 {/* Gallery Section */}
                 <section className="space-y-12 pb-20">
                     <div className="text-center md:text-left border-b-2 border-pink-100 pb-6 mb-12">
