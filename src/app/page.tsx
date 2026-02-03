@@ -6,9 +6,23 @@ export default function TopPage() {
 
       {/* メインコンテンツ */}
       <div className="z-10 text-center flex flex-col items-center">
-        {/* アイコン（既存の画像やアイコンがあれば適宜差し替えてください） */}
-        <div className="bg-white p-6 rounded-full shadow-sm mb-6 border border-pink-50 text-4xl">
-          🐱
+        {/* 最新のショート動画をエントランスに配置 */}
+        <div className="relative group mb-10">
+          <div className="absolute -inset-1 bg-gradient-to-r from-pink-200 to-brown-200 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+          <div className="relative w-48 aspect-[9/16] bg-white rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/S7bAcZNDJNw?autoplay=0&controls=0&rel=0"
+              title="Yotsuha Short Video"
+              style={{ border: 0 }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
+          {/* 装飾用のバッジ */}
+          <div className="absolute -top-3 -right-3 bg-pink-400 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform">
+            NEW VIDEO
+          </div>
         </div>
 
         {/* タイトル */}
