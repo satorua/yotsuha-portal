@@ -198,6 +198,83 @@ const RelaxPage = () => {
                             ))}
                     </div>
                 </section>
+                {/* Profile Section */}
+                <section className="space-y-12">
+                    <div className="text-center">
+                        <h2 className="text-3xl font-black mb-2">よつはのプロフィール</h2>
+                        <span className="text-pink-400 font-bold block">🐾 Profile 🐾</span>
+                    </div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="bg-pink-50/50 rounded-[3rem] p-8 md:p-12 border-2 border-dashed border-pink-200 relative overflow-hidden"
+                    >
+                        {/* 背景の肉球装飾 */}
+                        <div className="absolute top-10 right-10 opacity-5 -rotate-12">
+                            <ShoppingBag size={120} />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+                            <div className="space-y-6">
+                                <div className="flex items-center gap-4 border-b border-pink-100 pb-4">
+                                    <div className="w-12 h-12 bg-pink-400 rounded-full flex items-center justify-center text-white font-bold">名</div>
+                                    <div>
+                                        <p className="text-xs text-[#A1887F] font-bold uppercase tracking-widest">Name</p>
+                                        <p className="text-2xl font-black">よつは</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4 border-b border-pink-100 pb-4">
+                                    <div className="w-12 h-12 bg-[#D88C8C] rounded-full flex items-center justify-center text-white font-bold">呼</div>
+                                    <div>
+                                        <p className="text-xs text-[#A1887F] font-bold uppercase tracking-widest">Nickname</p>
+                                        <p className="text-xl font-bold">よつ、よちゅ</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4 border-b border-pink-100 pb-4">
+                                    <div className="w-12 h-12 bg-[#4E342E] rounded-full flex items-center justify-center text-white font-bold">柄</div>
+                                    <div>
+                                        <p className="text-xs text-[#A1887F] font-bold uppercase tracking-widest">Pattern</p>
+                                        <p className="text-xl font-bold">サバトラ / MIX猫</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="space-y-6">
+                                <div className="flex items-center gap-4 border-b border-pink-100 pb-4">
+                                    <div className="w-12 h-12 bg-pink-300 rounded-full flex items-center justify-center text-white font-bold">誕</div>
+                                    <div>
+                                        <p className="text-xs text-[#A1887F] font-bold uppercase tracking-widest">Birthday</p>
+                                        <p className="text-xl font-bold">2024年 3月（推定）</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4 border-b border-pink-100 pb-4">
+                                    <div className="w-12 h-12 bg-[#D3BFA7] rounded-full flex items-center justify-center text-white font-bold">地</div>
+                                    <div>
+                                        <p className="text-xs text-[#A1887F] font-bold uppercase tracking-widest">Origin</p>
+                                        <p className="text-xl font-bold">沖縄</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4 border-b border-pink-100 pb-4">
+                                    <div className="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center text-white font-bold">🏠</div>
+                                    <div>
+                                        <p className="text-xs text-[#A1887F] font-bold uppercase tracking-widest">Rescue Place</p>
+                                        <p className="text-lg font-bold">渋谷区・港区あたりの保護猫カフェ</p>
+                                        <p className="text-[10px] text-pink-400 font-black tracking-tighter">※2024年11月まで</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 下部のメッセージ的な装飾 */}
+                        <div className="mt-12 pt-8 text-center border-t border-pink-100">
+                            <p className="text-[#A1887F] italic font-serif">
+                                &ldquo;いつも元気いっぱい、遊ぶのが大好きなよつはだにゃ！&rdquo;
+                            </p>
+                        </div>
+                    </motion.div>
+                </section>
             </main>
 
             <ChatBot />
