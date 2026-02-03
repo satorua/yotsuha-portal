@@ -313,6 +313,80 @@ const RelaxPage = () => {
                         </div>
                     </motion.div>
                 </section>
+
+                {/* Footer / Legal Section */}
+                <footer className="pt-20 pb-10 border-t border-pink-100/50">
+                    <div className="max-w-4xl mx-auto space-y-12">
+                        {/* よつはからのお願い（誠実なメッセージ） */}
+                        <div className="text-center space-y-4">
+                            <div className="inline-block p-3 bg-pink-50 rounded-2xl">
+                                <ShoppingBag size={32} className="text-pink-400" />
+                            </div>
+                            <h3 className="text-xl font-black text-[#4E342E]">よつはからのお約束とお願いだにゃ</h3>
+                            <p className="text-sm text-[#A1887F] leading-relaxed max-w-2xl mx-auto">
+                                このサイトをみんなに安心して楽しんでもらうための大事なルールだにゃ。<br className="hidden md:block" />
+                                ちょっと難しい言葉もあるけど、最後まで読んでくれると嬉しいにゃ！
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] leading-relaxed text-[#8D6E63]">
+                            {/* 免責事項 */}
+                            <div className="bg-white/50 p-6 rounded-[2rem] border border-pink-50 space-y-3">
+                                <h4 className="font-black text-[#D88C8C] flex items-center gap-2">
+                                    <span>🐾</span> 免責事項 (Disclaimer)
+                                </h4>
+                                <p>
+                                    当サイトに掲載されている情報は、細心の注意を払っておりますが、その正確性や安全性を保証するものではありませんにゃ。情報の利用によって生じたトラブルや損失について、よつは（当サイト運営者）は一切の責任を負いかねますにゃ。
+                                </p>
+                                <p>
+                                    また、外部サイトへのリンク先で提供される情報やサービスについても責任を負えないので、移動先での確認をお願いするにゃ。YouTube動画の著作権や肖像権は各権利者に帰属するにゃ。
+                                </p>
+                            </div>
+
+                            {/* プライバシーポリシー */}
+                            <div className="bg-white/50 p-6 rounded-[2rem] border border-pink-50 space-y-3">
+                                <h4 className="font-black text-[#D88C8C] flex items-center gap-2">
+                                    <span>🐾</span> プライバシーポリシー
+                                </h4>
+                                <p>
+                                    当サイトでは、アクセス解析や広告配信のためにCookie（クッキー）を使用しているにゃ。Cookieを使うことで、みんなのブラウザを識別してより良い体験を届けられるけど、個人を特定する情報は含まれないので安心だにゃ。ブラウザの設定でCookieを無効にすることもできるにゃ。
+                                </p>
+                                <p>
+                                    YouTube APIを利用して最新の動画情報を取得しているにゃ。これに伴い公開データの一部を利用することがあるけど、規約に則って適切に取り扱っているにゃ。
+                                </p>
+                            </div>
+
+                            {/* AIチャットについて */}
+                            <div className="bg-white/50 p-6 rounded-[2rem] border border-pink-50 space-y-3">
+                                <h4 className="font-black text-[#D88C8C] flex items-center gap-2">
+                                    <span>🐾</span> AIチャット（Gemini）利用について
+                                </h4>
+                                <p>
+                                    サイト内のAIチャットはGoogleのGemini APIを使用しているにゃ。入力されたメッセージはAIの性能向上のために利用される可能性があるので、お名前や住所などの大切な個人情報は絶対に入力しないようにお願いするにゃ！
+                                </p>
+                            </div>
+
+                            {/* 広告・アフィリエイト */}
+                            <div className="bg-white/50 p-6 rounded-[2rem] border border-pink-50 space-y-3">
+                                <h4 className="font-black text-[#D88C8C] flex items-center gap-2">
+                                    <span>🐾</span> 広告とアフィリエイトについて
+                                </h4>
+                                <p>
+                                    当サイトは、Amazon.co.jpおよび楽天市場を宣伝しリンクすることによって紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムおよび楽天アフィリエイトの参加者だにゃ。
+                                </p>
+                                <p>
+                                    また、Google AdSenseを利用して広告を表示することがあるにゃ。Googleなどの第三者配信事業者は、Cookieを使用して、みんなが過去にこのサイトや他のサイトにアクセスした情報に基づき、最適な広告を表示するにゃ。パーソナライズ広告の設定（広告設定）でこれらを無効にできるにゃ。
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="text-center pt-8">
+                            <p className="text-[10px] font-bold text-[#D3BFA7] tracking-widest uppercase">
+                                &copy; 2024 YOTSUHA PORTAL. ALL RIGHTS RESERVED.
+                            </p>
+                        </div>
+                    </div>
+                </footer>
             </main>
 
             <ChatBot />
