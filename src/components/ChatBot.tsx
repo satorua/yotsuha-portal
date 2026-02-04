@@ -53,7 +53,7 @@ export default function ChatBot() {
             {!isOpen && (
                 <div className="animate-float mb-2">
                     <div className="relative bg-white text-[#5D4037] px-6 py-3 rounded-2xl shadow-xl border-2 border-pink-100 whitespace-nowrap text-sm font-black">
-                        AIよつはとお話ししたい方はこちらにゃ🐾
+                        よつはとお話ししたい方はこちらにゃ🐾
                         {/* 吹き出しの三角部分 */}
                         <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r-2 border-b-2 border-pink-100 rotate-45"></div>
                     </div>
@@ -89,7 +89,7 @@ export default function ChatBot() {
             {isOpen && (
                 <div className="absolute bottom-16 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-pink-100">
                     <div className="bg-pink-400 p-4 text-white font-bold flex justify-between items-center">
-                        <span>よつは AI</span>
+                        <span>よつは 🐾</span>
                         <div className="flex items-center text-xs">
                             <span className="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span>
                             ONLINE
@@ -122,7 +122,7 @@ export default function ChatBot() {
                     <div className="flex flex-col bg-white">
                         <div className="px-4 py-1.5 bg-pink-50 text-[10px] text-[#A1887F] font-bold border-t border-pink-100 flex items-center gap-1">
                             <PawPrint size={10} className="text-pink-300" />
-                            AIは間違った答えを言うこともあるにゃ。大事なことは確認してにゃ！
+                            お話しが噛み合わないこともあるけど許してにゃ🐾
                         </div>
                         <div className="p-4 border-t border-gray-100 flex space-x-2">
                             <input

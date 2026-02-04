@@ -324,105 +324,20 @@ const RelaxPage = () => {
                     </motion.div>
                 </section>
 
-                {/* Development Story Section - Friendly Version */}
-                <section id="story" className="space-y-12">
-                    <div className="text-center">
-                        <h2 className="text-3xl font-black mb-2">誰でもクリエイターになれるにゃ！</h2>
-                        <span className="text-pink-400 font-bold block tracking-widest text-xs">AI & You: Story of Creation</span>
-                    </div>
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(216,140,140,0.1)] border border-pink-50 relative"
-                    >
-                        <div className="max-w-4xl mx-auto space-y-16">
-                            <div className="text-center space-y-4">
-                                <h3 className="text-2xl font-black text-[#4E342E]">
-                                    コードが書けなくても、<span className="text-pink-500">魔法の杖</span>があれば大丈夫。
-                                </h3>
-                                <p className="text-[#A1887F] leading-relaxed max-w-2xl mx-auto font-medium">
-                                    このサイトはエンジニアじゃない作者が、AIエージェント「Antigravity」とお話ししながら作りました。<br className="hidden md:block" />
-                                    難しい勉強はいらないにゃ。必要なのは「こんなの作りたい！」っていうワクワクする気持ちだけ！
-                                </p>
-                            </div>
-
-                            {/* 3 Step Process */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                {[
-                                    {
-                                        step: "Step 01",
-                                        title: "想いを伝える",
-                                        desc: "AIにお話しするだけ！「猫の可愛いサイトを作りたいにゃ」と伝えます。",
-                                        icon: <MessageSquare size={32} className="text-blue-400" />,
-                                        bg: "bg-blue-50"
-                                    },
-                                    {
-                                        step: "Step 02",
-                                        title: "AIが形にする",
-                                        desc: "AIが魔法のようにコードを書いて、目の前でサイトが出来上がります。",
-                                        icon: <Wand2 size={32} className="text-pink-400" />,
-                                        bg: "bg-pink-50"
-                                    },
-                                    {
-                                        step: "Step 03",
-                                        title: "もっと良くする",
-                                        desc: "「ここをピンクにして！」と言えば、AIがすぐに直してくれます。",
-                                        icon: <CheckCircle size={32} className="text-green-400" />,
-                                        bg: "bg-green-50"
-                                    }
-                                ].map((item, idx) => (
-                                    <div key={idx} className="relative p-8 rounded-[2rem] bg-[#FAF8F5] border border-white shadow-sm flex flex-col items-center text-center space-y-4">
-                                        <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mb-2`}>
-                                            {item.icon}
-                                        </div>
-                                        <span className="text-[10px] font-black text-[#D3BFA7] tracking-[0.2em]">{item.step}</span>
-                                        <h4 className="text-lg font-black">{item.title}</h4>
-                                        <p className="text-xs text-[#A1887F] leading-relaxed">{item.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="bg-pink-50/50 rounded-[2.5rem] p-8 md:p-10 border border-dashed border-pink-200">
-                                <div className="flex flex-col md:flex-row items-center gap-8">
-                                    <div className="flex-1 space-y-4">
-                                        <h4 className="text-xl font-black text-[#4E342E] flex items-center gap-2">
-                                            <Sparkles size={20} className="text-pink-400" />
-                                            次は、あなたの番だにゃ！
-                                        </h4>
-                                        <p className="text-sm text-[#5D4037] leading-relaxed">
-                                            AIは昨日までできなかったことを、今日できるようにしてくれる最高のパートナー。このサイトも、AIとの楽しいおしゃべりから生まれました。<br />
-                                            あなたの中に眠っている「作りたい」を、AIと一緒に魔法で形にしてみないかにゃ？
-                                        </p>
-                                    </div>
-                                    <div className="shrink-0 grid grid-cols-2 gap-3">
-                                        <div className="px-4 py-3 bg-white rounded-xl shadow-sm text-[10px] font-bold text-gray-400 flex flex-col items-center gap-1">
-                                            <Layers size={14} /> Next.js
-                                        </div>
-                                        <div className="px-4 py-3 bg-white rounded-xl shadow-sm text-[10px] font-bold text-gray-400 flex flex-col items-center gap-1">
-                                            <Cpu size={14} /> Gemini AI
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </section>
 
                 {/* Footer / Legal Section */}
                 <footer className="pt-20 pb-10 border-t border-pink-100/50">
                     <div className="max-w-4xl mx-auto space-y-12">
-                        {/* よつはからのお願い（誠実なメッセージ） */}
+                        {/* Guidance and Legal Section */}
                         <div className="text-center space-y-4">
                             <div className="inline-block p-3 bg-pink-50 rounded-2xl">
                                 <ShoppingBag size={32} className="text-pink-400" />
                             </div>
-                            <h3 className="text-xl font-black text-[#4E342E]">よつはからのお約束とお願いだにゃ</h3>
+                            <h3 className="text-xl font-black text-[#4E342E]">サイトのご利用にあたって</h3>
                             <p className="text-sm text-[#A1887F] leading-relaxed max-w-2xl mx-auto">
-                                このサイトをみんなに安心して楽しんでもらうための大事なルールだにゃ。<br className="hidden md:block" />
-                                ちょっと難しい言葉もあるけど、最後まで読んでくれると嬉しいにゃ！
+                                当サイトを安心してご利用いただくための重要な事項について記載しています。<br className="hidden md:block" />
+                                安全な運営のため、ご一読いただけますと幸いです。
                             </p>
                         </div>
 
@@ -430,13 +345,13 @@ const RelaxPage = () => {
                             {/* 免責事項 */}
                             <div className="bg-white/50 p-6 rounded-[2rem] border border-pink-50 space-y-3">
                                 <h4 className="font-black text-[#D88C8C] flex items-center gap-2">
-                                    <span>🐾</span> 免責事項 (Disclaimer)
+                                    <span>🐾</span> 免責事項
                                 </h4>
                                 <p>
-                                    当サイトに掲載されている情報は、細心の注意を払っておりますが、その正確性や安全性を保証するものではありませんにゃ。情報の利用によって生じたトラブルや損失について、よつは（当サイト運営者）は一切の責任を負いかねますにゃ。
+                                    当サイトに掲載されている情報は、細心の注意を払っておりますが、その正確性や安全性を保証するものではありません。情報の利用によって生じたトラブルや損失について、運営者は一切の責任を負いかねます。
                                 </p>
                                 <p>
-                                    また、外部サイトへのリンク先で提供される情報やサービスについても責任を負えないので、移動先での確認をお願いするにゃ。YouTube動画の著作権や肖像権は各権利者に帰属するにゃ。
+                                    また、外部サイトへのリンク先で提供される情報やサービスについても責任を負いかねますので、移動先サイトにてご確認ください。YouTube動画の著作権や肖像権は各権利者に帰属します。
                                 </p>
                             </div>
 
@@ -446,33 +361,33 @@ const RelaxPage = () => {
                                     <span>🐾</span> プライバシーポリシー
                                 </h4>
                                 <p>
-                                    当サイトでは、アクセス解析や広告配信のためにCookie（クッキー）を使用しているにゃ。Cookieを使うことで、みんなのブラウザを識別してより良い体験を届けられるけど、個人を特定する情報は含まれないので安心だにゃ。ブラウザの設定でCookieを無効にすることもできるにゃ。
+                                    当サイトでは、アクセス解析や広告配信のためにCookie（クッキー）を使用しています。Cookieはブラウザを識別し、より良い体験を提供するために使用されますが、個人を特定する情報は含まれません。ブラウザの設定でCookieを無効にすることも可能です。
                                 </p>
                                 <p>
-                                    YouTube APIを利用して最新の動画情報を取得しているにゃ。これに伴い公開データの一部を利用することがあるけど、規約に則って適切に取り扱っているにゃ。
+                                    YouTube APIを利用して最新の動画情報を取得しており、これに伴い公開データの一部を利用することがありますが、規約に則り適切に取り扱っています。
                                 </p>
                             </div>
 
                             {/* AIチャットについて */}
                             <div className="bg-white/50 p-6 rounded-[2rem] border border-pink-50 space-y-3">
                                 <h4 className="font-black text-[#D88C8C] flex items-center gap-2">
-                                    <span>🐾</span> AIチャット（Gemini）利用について
+                                    <span>🐾</span> AIチャットの利用について
                                 </h4>
                                 <p>
-                                    サイト内のAIチャットはGoogleのGemini APIを使用しているにゃ。入力されたメッセージはAIの性能向上のために利用される可能性があるので、お名前や住所などの大切な個人情報は絶対に入力しないようにお願いするにゃ！
+                                    サイト内のチャット機能は生成AI技術を使用しています。入力されたメッセージは品質向上ののために利用される可能性があるため、お名前や住所などの重要な個人情報は入力しないようお願いいたします。また、AIは誤った情報を提示する場合があることをご了承ください。
                                 </p>
                             </div>
 
                             {/* 広告・アフィリエイト */}
                             <div className="bg-white/50 p-6 rounded-[2rem] border border-pink-50 space-y-3">
                                 <h4 className="font-black text-[#D88C8C] flex items-center gap-2">
-                                    <span>🐾</span> 広告とアフィリエイトについて
+                                    <span>🐾</span> 広告とアフィリエイト
                                 </h4>
                                 <p>
-                                    当サイトは、Amazon.co.jpおよび楽天市場を宣伝しリンクすることによって紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムおよび楽天アフィリエイトの参加者だにゃ。
+                                    当サイトは、Amazon.co.jpおよび楽天市場等のアフィリエイトプログラムの参加者です。適切な商品紹介を通じて運営を維持しています。
                                 </p>
                                 <p>
-                                    また、Google AdSenseを利用して広告を表示することがあるにゃ。Googleなどの第三者配信事業者は、Cookieを使用して、みんなが過去にこのサイトや他のサイトにアクセスした情報に基づき、最適な広告を表示するにゃ。パーソナライズ広告の設定（広告設定）でこれらを無効にできるにゃ。
+                                    Google AdSense等の第三者配信事業者は、Cookieを使用してユーザーの過去のアクセス情報に基づき広告を配信します。これらの設定は各サービスの広告設定より無効化することが可能です。
                                 </p>
                             </div>
                         </div>

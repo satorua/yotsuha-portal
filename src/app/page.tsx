@@ -80,23 +80,7 @@ export default function TopPage() {
         </motion.div>
       ))}
 
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-10 right-10 z-30"
-      >
-        <Link href="/relax#story" className="group block">
-          <div className="bg-yellow-100/90 p-4 shadow-lg transform -rotate-3 hover:rotate-0 transition-transform cursor-pointer border-t border-yellow-200">
-            <div className="text-[10px] font-black text-yellow-700 uppercase tracking-tighter mb-1">Development Note</div>
-            <div className="text-xs font-bold text-gray-800 flex items-center gap-1">
-              <Wand2 size={12} className="text-yellow-600" />
-              制作の裏話を見る🐾
-            </div>
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-blue-500 rounded-full shadow-inner"></div>
-          </div>
-        </Link>
-      </motion.div>
+
 
       <div className="z-20 text-center flex flex-col items-center p-4">
         <motion.div
@@ -187,7 +171,7 @@ export default function TopPage() {
         </motion.div>
 
         <div className="mt-8 text-[9px] font-black text-[#8D6E63] opacity-60 tracking-widest bg-white/20 px-4 py-1.5 rounded-full backdrop-blur-[2px] border border-white/20">
-          V1.3.0 (PREMIUM POLISH) // GUIDED BY AI
+          OFFICIAL PORTAL V1.3.0
         </div>
       </div>
     </main>
