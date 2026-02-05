@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // 1時間ごとに更新 (ISR)
 
 export async function GET() {
     try {
@@ -29,8 +29,9 @@ export async function GET() {
         const channelId = channelData.items[0].id;
 
         // 2. そのチャンネルの最新動画を1件取得
+        // videoDuration=short を追加してショート動画のみを対象にする
         const videoRes = await fetch(
-            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&maxResults=1&key=${apiKey}`
+            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&type=video&videoDuration=short&maxResults=1&key=${apiKey}`
         );
         const videoData = await videoRes.json();
 
