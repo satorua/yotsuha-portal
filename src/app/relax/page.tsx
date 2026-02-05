@@ -35,8 +35,8 @@ const RelaxPage = () => {
         },
     ];
 
-    // 2. ヒーロー動画用のステート（最新をAPIから取得）
-    const [heroVideoId, setHeroVideoId] = React.useState('S7bAcZNDJNw');
+    // 2. ヒーロー動画用のステート（今月のおすすめ動画IDで固定）
+    const [heroVideoId] = React.useState('t-sILn_nTA0');
 
     // 3. ギャラリー用ショート動画IDリスト（6本）
     const videoIds = [
@@ -48,6 +48,8 @@ const RelaxPage = () => {
         'jbCZNtY9rTg'
     ];
 
+    // 自動取得ロジックを一時停止（固定動画を表示するため）
+    /*
     React.useEffect(() => {
         const fetchLatest = async () => {
             try {
@@ -62,6 +64,7 @@ const RelaxPage = () => {
         };
         fetchLatest();
     }, []);
+    */
 
     return (
         <div className="min-h-screen bg-[#FFFDFB] text-[#5D4037] font-sans selection:bg-pink-100 selection:text-pink-900">
@@ -86,10 +89,10 @@ const RelaxPage = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="inline-block px-4 py-1 rounded-full bg-pink-50 text-pink-500 text-xs font-black tracking-widest mb-6">
-                            TODAY&apos;S PICK
+                            THIS MONTH&apos;S PICK
                         </div>
                         <h1 className="text-4xl md:text-6xl font-black mb-4 text-[#4E342E]">
-                            今日のよつは
+                            今月のよつは
                         </h1>
                     </motion.div>
 

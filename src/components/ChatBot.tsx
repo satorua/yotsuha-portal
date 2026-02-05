@@ -5,7 +5,7 @@ import { Send, X, Cat, PawPrint } from 'lucide-react';
 
 export default function ChatBot() {
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<{ role: 'user' | 'bot'; text: string }[]>([]);
+    const [messages, setMessages] = useState<{ role: 'user' | 'bot'; text: string; isError?: boolean }[]>([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -38,10 +38,10 @@ export default function ChatBot() {
             if (data.reply) {
                 setMessages(prev => [...prev, { role: 'bot', text: data.reply }]);
             } else if (data.error) {
-                setMessages(prev => [...prev, { role: 'bot', text: data.error }]);
+                setMessages(prev => [...prev, { role: 'bot', text: data.error, isError: true }]);
             }
         } catch {
-            setMessages(prev => [...prev, { role: 'bot', text: "通信に失敗したにゃ。ネットを確認してほしいにゃ。" }]);
+            setMessages(prev => [...prev, { role: 'bot', text: "通信に失敗したにゃ。ネットを確認してほしいにゃ。", isError: true }]);
         } finally {
             setIsLoading(false);
         }
@@ -102,8 +102,13 @@ export default function ChatBot() {
                         )}
                         {messages.map((m, i) => (
                             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${m.role === 'user' ? 'bg-pink-500 text-white rounded-tr-none' : 'bg-white text-gray-700 shadow-sm rounded-tl-none border border-pink-100'
+                                <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${m.role === 'user'
+                                        ? 'bg-pink-500 text-white rounded-tr-none'
+                                        : m.isError
+                                            ? 'bg-red-50 text-red-600 border border-red-200 rounded-tl-none font-bold'
+                                            : 'bg-white text-gray-700 shadow-sm rounded-tl-none border border-pink-100'
                                     }`}>
+                                    {m.isError && <span className="mr-1">⚠️</span>}
                                     {m.text}
                                 </div>
                             </div>

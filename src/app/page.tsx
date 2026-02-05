@@ -6,24 +6,13 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function TopPage() {
-  const [videoId, setVideoId] = useState('S7bAcZNDJNw');
+  const [videoId] = useState('t-sILn_nTA0');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchLatestVideo = async () => {
-      try {
-        const res = await fetch('/api/youtube/latest');
-        const data = await res.json();
-        if (data.videoId) {
-          setVideoId(data.videoId);
-        }
-      } catch (error) {
-        console.error("Failed to fetch latest video:", error);
-      } finally {
-        setTimeout(() => setIsLoading(false), 500);
-      }
-    };
-    fetchLatestVideo();
+    // 動画を固定するため、自動取得ロジックを一時停止
+    // 将来的に動的に戻す場合はここを復活させる
+    setTimeout(() => setIsLoading(false), 500);
   }, []);
 
   const photos = [
