@@ -38,6 +38,14 @@ const RelaxPage = () => {
     // 2. ヒーロー動画用のステート（おすすめ動画3つ）
     const [recommendedVideoIds, setRecommendedVideoIds] = React.useState<string[]>([]);
 
+    // フォールバック用の動画リスト (APIが失敗したとき用)
+    const FALLBACK_VIDEOS = [
+        'S7bAcZNDJNw', 'PDb9RCc8nu0', 'fBJaaV5U51M',
+        'NlFUrHK463k', 'k_eTRDYBY-Q', '3VaM0u1sbAQ',
+        'jbCZNtY9rTg', 'E3xN1uFUidI', '_k8VSaS-tpQ',
+        'UT1OlSGB12A'
+    ];
+
     // 3. ギャラリー用ショート動画IDリスト（6本）
     const videoIds = [
         'PDb9RCc8nu0',
@@ -53,15 +61,26 @@ const RelaxPage = () => {
             try {
                 const res = await fetch('/api/youtube/popular');
                 const data = await res.json();
+
+                let sourceVideos = [];
+
                 if (data.videoIds && data.videoIds.length > 0) {
-                    // ランダムに3つ選ぶ
-                    const shuffled = [...data.videoIds].sort(() => 0.5 - Math.random());
-                    setRecommendedVideoIds(shuffled.slice(0, 3));
+                    sourceVideos = data.videoIds;
+                } else {
+                    console.warn("API returned no videos, using fallback.");
+                    sourceVideos = FALLBACK_VIDEOS;
                 }
+
+                // ランダムに3つ選ぶ (API由来でもフォールバックでも同様にシャッフル)
+                const shuffled = [...sourceVideos].sort(() => 0.5 - Math.random());
+                setRecommendedVideoIds(shuffled.slice(0, 3));
+
             } catch (error) {
-                console.error("Failed to fetch popular videos:", error);
-                // フォールバック: 固定の動画を表示
-                setRecommendedVideoIds(['S7bAcZNDJNw', 'PDb9RCc8nu0', 'fBJaaV5U51M']);
+                console.error("Failed to fetch popular videos, using fallback:", error);
+
+                // フォールバック: 固定リストからランダムに3つ
+                const shuffled = [...FALLBACK_VIDEOS].sort(() => 0.5 - Math.random());
+                setRecommendedVideoIds(shuffled.slice(0, 3));
             }
         };
         fetchPopular();
