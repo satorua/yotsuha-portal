@@ -40,7 +40,7 @@ export default function ChatBot() {
             } else if (data.error) {
                 setMessages(prev => [...prev, { role: 'bot', text: data.error }]);
             }
-        } catch (error) {
+        } catch {
             setMessages(prev => [...prev, { role: 'bot', text: "通信に失敗したにゃ。ネットを確認してほしいにゃ。" }]);
         } finally {
             setIsLoading(false);

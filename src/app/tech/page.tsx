@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Cpu, Zap, Brain, Rocket, ArrowLeft, ChevronRight } from 'lucide-react';
+import { Terminal, Zap, Brain, Rocket, ArrowLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 const TypewriterText = ({ text }: { text: string }) => {

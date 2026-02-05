@@ -34,12 +34,13 @@ export async function POST(req: Request) {
 
         return NextResponse.json({ reply: text });
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Chat API Error:", error);
         // エラー内容を具体的に返すことで、トラブルシューティングを容易にする
+        const errorMessage = error instanceof Error ? error.message : "Unknown error";
         return NextResponse.json({
             error: "ちょっと疲れちゃったにゃ。時間をおいて話しかけてほしいにゃ。",
-            details: error.message
+            details: errorMessage
         }, { status: 500 });
     }
 }

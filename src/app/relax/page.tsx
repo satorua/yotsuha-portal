@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, ShoppingBag, ArrowLeft, Code, Sparkles, Cpu, Layers, Heart, Wand2, MessageSquare, CheckCircle } from 'lucide-react';
+import { ExternalLink, ShoppingBag, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import ChatBot from '@/components/ChatBot';
 

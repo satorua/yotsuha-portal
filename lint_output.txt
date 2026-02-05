@@ -1,0 +1,32 @@
+
+> yotsuha-portal@0.1.0 lint
+> eslint
+
+
+/Users/asoshimasatoru/AI work/yotsuha-portal/src/app/api/chat/route.ts
+  37:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/asoshimasatoru/AI work/yotsuha-portal/src/app/api/youtube/latest/route.ts
+  45:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/asoshimasatoru/AI work/yotsuha-portal/src/app/page.tsx
+  7:10  warning  'Wand2' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/asoshimasatoru/AI work/yotsuha-portal/src/app/relax/page.tsx
+  5:48   warning  'Code' is defined but never used           @typescript-eslint/no-unused-vars
+  5:54   warning  'Sparkles' is defined but never used       @typescript-eslint/no-unused-vars
+  5:64   warning  'Cpu' is defined but never used            @typescript-eslint/no-unused-vars
+  5:69   warning  'Layers' is defined but never used         @typescript-eslint/no-unused-vars
+  5:77   warning  'Heart' is defined but never used          @typescript-eslint/no-unused-vars
+  5:84   warning  'Wand2' is defined but never used          @typescript-eslint/no-unused-vars
+  5:91   warning  'MessageSquare' is defined but never used  @typescript-eslint/no-unused-vars
+  5:106  warning  'CheckCircle' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/asoshimasatoru/AI work/yotsuha-portal/src/app/tech/page.tsx
+  5:20  warning  'Cpu' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/asoshimasatoru/AI work/yotsuha-portal/src/components/ChatBot.tsx
+  43:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 13 problems (2 errors, 11 warnings)
+
