@@ -112,7 +112,7 @@ const RelaxPage = () => {
                             SPECIAL PICK UP
                         </div>
                         <h1 className="text-3xl md:text-5xl font-black mb-4 text-[#4E342E]">
-                            あなたにおすすめのよつは
+                            よつはのおすすめ
                         </h1>
                     </motion.div>
 
