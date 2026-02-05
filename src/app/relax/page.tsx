@@ -35,16 +35,8 @@ const RelaxPage = () => {
         },
     ];
 
-    // 2. ヒーロー動画用のステート（おすすめ動画3つ）
-    const [recommendedVideoIds, setRecommendedVideoIds] = React.useState<string[]>([]);
-
-    // フォールバック用の動画リスト (APIが失敗したとき用)
-    const FALLBACK_VIDEOS = [
-        'S7bAcZNDJNw', 'PDb9RCc8nu0', 'fBJaaV5U51M',
-        'NlFUrHK463k', 'k_eTRDYBY-Q', '3VaM0u1sbAQ',
-        'jbCZNtY9rTg', 'E3xN1uFUidI', '_k8VSaS-tpQ',
-        'UT1OlSGB12A'
-    ];
+    // 2. ヒーロー動画用のステート（最新をAPIから取得）
+    const [heroVideoId, setHeroVideoId] = React.useState('S7bAcZNDJNw');
 
     // 3. ギャラリー用ショート動画IDリスト（6本）
     const videoIds = [
@@ -57,33 +49,18 @@ const RelaxPage = () => {
     ];
 
     React.useEffect(() => {
-        const fetchPopular = async () => {
+        const fetchLatest = async () => {
             try {
-                const res = await fetch('/api/youtube/popular');
+                const res = await fetch('/api/youtube/latest');
                 const data = await res.json();
-
-                let sourceVideos = [];
-
-                if (data.videoIds && data.videoIds.length > 0) {
-                    sourceVideos = data.videoIds;
-                } else {
-                    console.warn("API returned no videos, using fallback.");
-                    sourceVideos = FALLBACK_VIDEOS;
+                if (data.videoId) {
+                    setHeroVideoId(data.videoId);
                 }
-
-                // ランダムに3つ選ぶ (API由来でもフォールバックでも同様にシャッフル)
-                const shuffled = [...sourceVideos].sort(() => 0.5 - Math.random());
-                setRecommendedVideoIds(shuffled.slice(0, 3));
-
             } catch (error) {
-                console.error("Failed to fetch popular videos, using fallback:", error);
-
-                // フォールバック: 固定リストからランダムに3つ
-                const shuffled = [...FALLBACK_VIDEOS].sort(() => 0.5 - Math.random());
-                setRecommendedVideoIds(shuffled.slice(0, 3));
+                console.error("Failed to fetch latest video:", error);
             }
         };
-        fetchPopular();
+        fetchLatest();
     }, []);
 
     return (
@@ -101,7 +78,7 @@ const RelaxPage = () => {
             </nav>
 
             <main className="pt-24 pb-32 px-6 max-w-6xl mx-auto space-y-32">
-                {/* Recommended Section */}
+                {/* Hero Section */}
                 <section className="space-y-8 text-center pt-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -109,40 +86,29 @@ const RelaxPage = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="inline-block px-4 py-1 rounded-full bg-pink-50 text-pink-500 text-xs font-black tracking-widest mb-6">
-                            SPECIAL PICK UP
+                            TODAY&apos;S PICK
                         </div>
-                        <h1 className="text-3xl md:text-5xl font-black mb-4 text-[#4E342E]">
-                            よつはのおすすめ
+                        <h1 className="text-4xl md:text-6xl font-black mb-4 text-[#4E342E]">
+                            今日のよつは
                         </h1>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {recommendedVideoIds.length > 0 ? (
-                            recommendedVideoIds.map((id, index) => (
-                                <motion.div
-                                    key={`${id}-${index}`}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-                                    className="aspect-[9/16] w-full rounded-3xl bg-[#F5E6D3] shadow-xl overflow-hidden relative border-4 border-white"
-                                >
-                                    <iframe
-                                        className="w-full h-full"
-                                        src={`https://www.youtube.com/embed/${id}`}
-                                        title={`Recommended Video ${index + 1}`}
-                                        style={{ border: 0 }}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowFullScreen
-                                    ></iframe>
-                                </motion.div>
-                            ))
-                        ) : (
-                            // ローディング状態（スケルトン）
-                            [1, 2, 3].map((n) => (
-                                <div key={n} className="aspect-[9/16] w-full rounded-3xl bg-pink-50 animate-pulse border-4 border-white"></div>
-                            ))
-                        )}
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="aspect-video w-full rounded-3xl bg-[#F5E6D3] shadow-2xl overflow-hidden relative"
+                    >
+                        {/* メイン動画 */}
+                        <iframe
+                            className="w-full h-full"
+                            src={`https://www.youtube.com/embed/${heroVideoId}`}
+                            title="YouTube video player"
+                            style={{ border: 0 }}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        ></iframe>
+                    </motion.div>
                 </section>
 
                 {/* Goods Section */}
@@ -237,9 +203,9 @@ const RelaxPage = () => {
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
-                        {/* ギャラリーからはおすすめ動画を自動で除外して表示 */}
+                        {/* ギャラリーからはヒーロー動画を自動で除外して表示 */}
                         {videoIds
-                            .filter(id => !recommendedVideoIds.includes(id))
+                            .filter(id => id !== heroVideoId)
                             .slice(0, 6)
                             .map((id, i) => (
                                 <motion.div
